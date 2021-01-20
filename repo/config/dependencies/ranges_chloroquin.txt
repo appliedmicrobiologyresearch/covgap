@@ -1,0 +1,2 @@
+residues	start	end
+binding_residue	22559	23161
