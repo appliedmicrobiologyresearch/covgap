@@ -25,14 +25,14 @@ rule all:
         #expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.bam", sample=samples)
         #expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sam", sample=samples),
         #expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.unmapped.reads.only.sam", sample=samples)
-        #expand("result/{sample}/Mapping/{sample}.alignment.stats.tab", sample=samples)
-        #expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sorted.bam", sample=samples),
-        #expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.unmapped.reads.only.sorted.bam", sample=samples)
+        expand("result/{sample}/Mapping/{sample}.alignment.stats.tab", sample=samples),
+        expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sorted.bam", sample=samples),
+        expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.unmapped.reads.only.sorted.bam", sample=samples),
         expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.1000trimmed.sam", sample=samples),
         expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.1000trimmed.sorted.bam", sample=samples),
-        #expand("result/{sample}/Mapping/{sample}.average.coverage.tab", sample=samples)
-        #expand("result/{sample}/variantcall/{sample}.vcf", sample=samples),
-        #expand("result/{sample}/variantcall/{sample}.changes", sample=samples)
+        expand("result/{sample}/Mapping/{sample}.average.coverage.tab", sample=samples),
+        expand("result/{sample}/variantcall/{sample}.vcf", sample=samples),
+        expand("result/{sample}/variantcall/{sample}.changes", sample=samples)
         #expand("result/{sample}/variantcall/{sample}.depth.filtered.vcf", sample=samples),
         expand("result/{sample}/variantcall/{sample}.final.vcf", sample=samples),
         #expand("result/{sample}/variantcall/{sample}.afM0.vcf", sample=samples),
@@ -388,5 +388,5 @@ rule tagging:
         "config/envs/seqtk.yaml"
     shell:
         """
-        ../config/dependencies/tagger.sh {wildcards.sample} {params.nt}
+        config/dependencies/tagger.sh {wildcards.sample} {params.nt}
         """
