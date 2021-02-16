@@ -28,22 +28,22 @@ rule all:
         #expand("result/{sample}/Mapping/{sample}.alignment.stats.tab", sample=samples)
         #expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sorted.bam", sample=samples),
         #expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.unmapped.reads.only.sorted.bam", sample=samples)
-        #expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.1000trimmed.sam", sample=samples)
-        #expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.1000trimmed.sorted.bam", sample=samples)
+        expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.1000trimmed.sam", sample=samples)
+        expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.1000trimmed.sorted.bam", sample=samples)
         #expand("result/{sample}/Mapping/{sample}.average.coverage.tab", sample=samples)
         #expand("result/{sample}/variantcall/{sample}.vcf", sample=samples),
         #expand("result/{sample}/variantcall/{sample}.changes", sample=samples)
         #expand("result/{sample}/variantcall/{sample}.depth.filtered.vcf", sample=samples),
-        #expand("result/{sample}/variantcall/{sample}.final.vcf", sample=samples)
+        expand("result/{sample}/variantcall/{sample}.final.vcf", sample=samples)
         #expand("result/{sample}/variantcall/{sample}.afM0.vcf", sample=samples),
-        #expand("result/{sample}/variantcall/{sample}.minority_alleles.vcf", sample=samples),
-        #expand("result/{sample}/variantcall/{sample}.minority_alleles_report.tech", sample=samples)
-        #expand("result/{sample}/variantcall/{sample}.annotated.variants.vcf", sample=samples),
-        #expand("result/{sample}/variantcall/{sample}.annotated.minorityvariants.vcf", sample=samples)
+        expand("result/{sample}/variantcall/{sample}.minority_alleles.vcf", sample=samples),
+        expand("result/{sample}/variantcall/{sample}.minority_alleles_report.tech", sample=samples)
+        expand("result/{sample}/variantcall/{sample}.annotated.variants.vcf", sample=samples),
+        expand("result/{sample}/variantcall/{sample}.annotated.minorityvariants.vcf", sample=samples)
         #expand("result/{sample}/variantcall/{sample}.lessthan50.bed", sample=samples),
         #expand("result/{sample}/variantcall/{sample}.finalmask.bed", sample=samples)
         #expand("result/{sample}/variantcall/{sample}.old.consensus.fasta", sample=samples)
-        #expand("result/{sample}/variantcall/{sample}.Nstats.tab", sample=samples)
+        expand("result/{sample}/variantcall/{sample}.Nstats.tab", sample=samples)
         expand("result/{sample}/variantcall/{sample}.classification.tab",sample=samples)
 
 rule length_trim_1:
