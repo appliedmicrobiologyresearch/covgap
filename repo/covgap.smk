@@ -45,17 +45,6 @@ rule all:
         #expand("result/{sample}/variantcall/{sample}.old.consensus.fasta", sample=samples)
         #expand("result/{sample}/variantcall/{sample}.Nstats.tab", sample=samples)
         expand("result/{sample}/variantcall/{sample}.classification.tab",sample=samples)
-        
-#rule download:
-#    output: 
-#        condir=os.path.abspath("config/")
-#    shell:
-#        """
-#        mkdir {output.condir}
-#        git clone https://github.com/appliedmicrobiologyresearch/covgap/ covgap/
-#        cp -r covgap/repo/config/ {output.condir}
-#        rm -rf covgap
-#        """
 
 rule length_trim_1:
     threads: 1
