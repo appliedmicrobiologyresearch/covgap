@@ -27,14 +27,19 @@ snakemake -s path/to/covgap/covgap.smk --use-conda --cores 4
 ```
 parameters are customisable by adding the flag `--config` followed by the parameter to be changed. A full list of the parameters follows:
 
-| Left-Aligned  | Center Aligned  | Right Aligned |
-| :------------ |:---------------:| -----:|
-| col 3 is      | some wordy text | $1600 |
-| col 2 is      | centered        |   $12 |
-| zebra stripes | are neat        |    $1 |
-
-
-
-
+| Parameter  | Description  | Default |
+| :--------------- |:---------------------------:| -------:|
+| read_dir      | Directory containing the demultiplexed raw reads | reads/ |
+| QC_sliding_windows      | Sliding window used to scan the 5‟ end. It clips the read once the average quality within the window falls below a threshold         |   4 |
+| QC_phred_score | Minimum quality threshold per base (phred score) used to trim the read (see above sliding window) | 20 |
+| adapters | are neat        |    $1 |
+| primers | are neat        |    $1 |
+| ref_genome | are neat        |    $1 |
+| mapr | are neat        |    $1 |
+| unmapr | are neat        |    $1 |
+| uptrim_threshold | are neat        |    $1 |
+| variant_freq | are neat        |    $1 |
+| variant_depth | are neat        |    $1 |
+| n_threshold | are neat        |    $1 |
 
 
