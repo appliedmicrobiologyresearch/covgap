@@ -15,7 +15,7 @@ Loci showing not enough coverage to allow a confident variant call are masked wi
 You can install snakemake by creating a conda environment, as illustrated in the [Snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) page:
 
 ### Installation:
-Portability expansion is on its way, for the moment, we reccommend to clone the repository in a directory of your choice.
+Portability expansion is on its way, for the moment, we reccommend to clone the repository in a directory of choice:
 ```
 $ git clone https://github.com/appliedmicrobiologyresearch/covgap/ /path/to/covgap
 ```
@@ -25,7 +25,7 @@ The initial reads need to be already demultiplexed, paired end and tagged with `
 ```
 $ snakemake -s path/to/covgap/repo/covgap.smk --use-conda --cores [number of cores reserved]
 ```
-Parameters are customisable by adding the flag `--config` followed by the parameter to be changed. For example, to change the directory containing reads from the default to `../my_reads/` , the command will be
+Parameters are customisable by adding the flag `--config` followed by the parameter to be changed. For example, to change the directory containing reads from the default to `../my_reads/` , the command will be:
 ```
 $ snakemake -s path/to/covgap/repo/covgap.smk --use-conda --cores 4 --config read_dir=../my_reads/
 ```
