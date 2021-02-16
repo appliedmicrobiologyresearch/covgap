@@ -51,4 +51,4 @@ A full list of the parameters follows:
 
 | File | Description |
 | :--------------- |:---------------------------| 
-| read_dir      | [path] Directory containing the demultiplexed raw reads |
+| Mapping/*sample*.alignment.removed.duplicates.mapped.reads.only.sorted.*High/Low*Cov.bam | [path] Directory containing the demultiplexed raw reads |
