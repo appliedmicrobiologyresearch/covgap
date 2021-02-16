@@ -47,7 +47,7 @@ rule all:
         expand("result/{sample}/variantcall/{sample}.classification.tab",sample=samples)
 
 rule length_trim_1:
-    threads: 1
+    threads: workflow.cores * 0.75
     params:
         sw=config["QC_sliding_window"],
         phred=config["QC_phred_score"],
@@ -90,7 +90,7 @@ rule primer_trim:
         adapter_trimmed_R2="result/{sample}/trimmomatic/r2.no_adaptors.fastq.gz"
     params:
         primers=config["primers"]
-    threads: 1
+    threads: workflow.cores * 0.75
     output:
         primer_trimmed_R1="result/{sample}/trimmomatic/r1.no_adaptors_no_primers.fastq.gz",
         primer_trimmedNP_R1="result/{sample}/trimmomatic/r1.no_adaptors_no_primers.not-paired.fastq.gz",
@@ -106,7 +106,7 @@ rule second_length_trim:
     input:
         primer_trimmed_R1="result/{sample}/trimmomatic/r1.no_adaptors_no_primers.fastq.gz",
         primer_trimmed_R2="result/{sample}/trimmomatic/r2.no_adaptors_no_primers.fastq.gz"
-    threads: 1
+    threads: workflow.cores * 0.75
     params:
         sw=config["QC_sliding_window"],
         phred=config["QC_phred_score"],
@@ -126,7 +126,7 @@ rule align:
     input:
         QF_R1="result/{sample}/trimmomatic/r1.no_adaptors_no_primers_trimmed.fastq.gz",
         QF_R2="result/{sample}/trimmomatic/r2.no_adaptors_no_primers_trimmed.fastq.gz"
-    threads: 2
+    threads: workflow.cores * 0.75
     params:
         ref=config["ref_genome"]
     conda:
@@ -139,7 +139,7 @@ rule align:
 rule sam_sort:
     input:
         sam1="result/{sample}/Mapping/{sample}.alignment.sam"
-    threads: 2
+    threads: workflow.cores * 0.25
     conda: 
         "config/envs/Java_related.yaml"
     output:
@@ -158,7 +158,7 @@ rule mapping:
     params:    
         Rmap=config["mapr"],
         Rumap=config["unmapr"]
-    threads: 2
+    threads: workflow.cores * 0.50
     conda:
         "config/envs/variantbam.yaml"
     output:
@@ -174,7 +174,7 @@ rule map_stats:
     input:
         map="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sam",
         unmap="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.unmapped.reads.only.sam"
-    threads: 2
+    threads: workflow.cores * 0.50
     conda:
         "config/envs/Java_related.yaml"
     output:
@@ -196,7 +196,7 @@ rule sam_sort2:
     input:
         map="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sam",
         unmap="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.unmapped.reads.only.sam"
-    threads: 2
+    threads: workflow.cores * 0.25
     conda:
         "config/envs/Java_related.yaml"
     output:
@@ -213,7 +213,7 @@ rule sam_sort2:
 rule downtrim_DE:
     input:
         mapped_S="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sorted.bam"
-    threads: 1
+    threads: workflow.cores * 0.25
     params: 
         up_tr=config["uptrim_threshold"]
     conda:
@@ -226,7 +226,7 @@ rule downtrim_DE:
 rule sam_sort_DE:
     input:
         trimmed_sam1="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.1000trimmed.sam"
-    threads: 1 
+    threads: workflow.cores * 0.25
     conda:
         "config/envs/Java_related.yaml"
     output:
@@ -240,7 +240,7 @@ rule sam_sort_DE:
 rule coverage_stats:
     input:
         mapped_S="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sorted.bam" 
-    threads: 1
+    threads: workflow.cores * 0.25
     conda:
         "config/envs/Java_related.yaml"
     output:
@@ -256,7 +256,7 @@ rule coverage_stats:
 rule variant_call: 
     input:
         frags="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sorted.bam"
-    threads: 4
+    threads: workflow.cores * 1
     params:
         ref=config["ref_genome"]
     conda:
@@ -270,7 +270,7 @@ rule variant_call:
 rule variant_filter:
     input:
         vcf="result/{sample}/variantcall/{sample}.vcf"
-    threads: 1
+    threads: workflow.cores * 0.5
     params:
         af=config["variant_freq"],
         dp=config["variant_depth"]
