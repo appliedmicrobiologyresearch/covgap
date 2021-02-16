@@ -21,7 +21,17 @@ $ git clone https://github.com/appliedmicrobiologyresearch/covgap/ /path/to/covg
 ```
 
 ## Using covgap:
-The initial reads need to be demultiplexed and tagged with `_R1.fastq.gz` or `_R2.fastq.gz` 
+The initial reads need to be demultiplexed, paired end and tagged with `_R1.fastq.gz` and `_R2.fastq.gz`. To run the command with default options simply type:
+```
+snakemake -s path/to/covgap/covgap.smk --use-conda --cores 4
+```
+parameters are customisable by adding the flag `--config` followed by the parameter to be changed. A full list of the parameters follows:
+
+| Left-Aligned  | Center Aligned  | Right Aligned |
+| :------------ |:---------------:| -----:|
+| col 3 is      | some wordy text | $1600 |
+| col 2 is      | centered        |   $12 |
+| zebra stripes | are neat        |    $1 |
 
 
 
