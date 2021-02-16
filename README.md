@@ -28,18 +28,18 @@ snakemake -s path/to/covgap/covgap.smk --use-conda --cores 4
 parameters are customisable by adding the flag `--config` followed by the parameter to be changed. A full list of the parameters follows:
 
 | Parameter  | Description  | Default |
-| :--------------- |:---------------------------:| -------:|
+| :--------------- |:---------------------------| :-------|
 | read_dir      | Directory containing the demultiplexed raw reads | reads/ |
 | QC_sliding_windows      | Sliding window used to scan the 5‟ end. It clips the read once the average quality within the window falls below a threshold         |   4 |
 | QC_phred_score | Minimum quality threshold per base (phred score) used to trim the read (see above sliding window) | 20 |
-| adapters | are neat        |    $1 |
-| primers | are neat        |    $1 |
-| ref_genome | are neat        |    $1 |
-| mapr | are neat        |    $1 |
-| unmapr | are neat        |    $1 |
-| uptrim_threshold | are neat        |    $1 |
-| variant_freq | are neat        |    $1 |
-| variant_depth | are neat        |    $1 |
-| n_threshold | are neat        |    $1 |
+| adapters | The sequence of adapters to be trimmed (fasta format) | Nextera Flex adapters |
+| primers | The sequences of forward and reverse primers used for the amplicon sequence (fasta format) | ARTIC primers V3 |
+| ref_genome | The full SARS-CoV-2 genome used as reference | Wuhan-Hu-1 (NC_045512.2) |
+| mapr | Mapping criteria to consider a read as mapping (json format) | map, mate_mapped |
+| unmapr | Unmapping criteria to consider a read as NOT mapping (json format)   | unmapped, mate_unmapped |
+| uptrim_threshold | Upperbound threshold to prune the read pileup if above the threshold. NOTE: this trimming is used for plot display only. It is NOT affecting the variant call | 1000 |
+| variant_freq | Minimum alternative frequency in the read pileup to consider a variant as primary. We reccommend to choose values higher than 0.7 NOTE: they will be considered primary only those variants showing a variant_freq AND a variant_depth above threshold | 0.7 |
+| variant_depth | Minimum locus depth in the read pile up to consider a variant as primary. NOTE: they will be considered primary only those variants showing a variant_freq AND a variant_depth above threshold | 50 |
+| n_threshold | Ambiguous base call percentage overall the consensus to consider the genome HighCov or LowCov | 10 |
 
 
