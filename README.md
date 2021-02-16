@@ -1,18 +1,18 @@
 # COVGAP
-### COVID-19 Genome Analysis Pipeline, for whole genome sequencing and annotation of SARS-CoV-2
+#### COVID-19 Genome Analysis Pipeline, for whole genome sequencing and annotation of SARS-CoV-2
 ## Introduction:
 SARS
 Basic version: new versions will be uploaded within short time.
 
 ## Installation:
-## Requirements:
+### Requirements:
 - pyhton >= 3.7
 - snakemake >= 5.26
 - git >=1.8.3
 
 You can install snakemake by creating a conda environment, as illustrated [here] (https://snakemake.readthedocs.io/en/stable/getting_started/installation.html):
 
-## Installation:
+### Installation:
 Portability expansion is on its way, for the moment, we reccommend to clone the repository in a directory of your choice. The procedure was tested successfully in Linux and Mac operative systems.
 ```
 $ git clone https://github.com/appliedmicrobiologyresearch/covgap/ /path/to/covgap
