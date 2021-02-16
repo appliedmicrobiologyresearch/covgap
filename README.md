@@ -25,7 +25,12 @@ The initial reads need to be demultiplexed, paired end and tagged with `_R1.fast
 ```
 snakemake -s path/to/covgap/covgap.smk --use-conda --cores 4
 ```
-parameters are customisable by adding the flag `--config` followed by the parameter to be changed. A full list of the parameters follows:
+Parameters are customisable by adding the flag `--config` followed by the parameter to be changed. For example, to change the directory containing reads from the default to `../my_reads/` , the command will be
+```
+snakemake -s path/to/covgap/covgap.smk --use-conda --cores 4 --config read_dir=../my_reads/
+```
+
+A full list of the parameters follows:
 
 | Parameter  | Description  | Default |
 | :--------------- |:---------------------------| :-------|
