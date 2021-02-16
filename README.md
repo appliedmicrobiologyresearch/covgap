@@ -17,7 +17,7 @@ You can install snakemake by creating a conda environment, as illustrated in the
 ### Installation:
 Portability expansion is on its way, for the moment, we reccommend to clone the repository in a directory of choice:
 ```
-$ git clone https://github.com/appliedmicrobiologyresearch/covgap/ /path/to/covgap
+$ git clone https://github.com/appliedmicrobiologyresearch/covgap/ path/to/covgap
 ```
 
 ## Using covgap:
