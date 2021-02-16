@@ -21,7 +21,7 @@ $ git clone https://github.com/appliedmicrobiologyresearch/covgap/ /path/to/covg
 ```
 
 ## Using covgap:
-The initial reads need to be demultiplexed and tagged with _R1.fastq.gz or _R2.fastq.gz
+The initial reads need to be demultiplexed and tagged with `_R1.fastq.gz` or `_R2.fastq.gz` 
 
 
 
