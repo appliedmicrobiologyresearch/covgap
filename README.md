@@ -21,7 +21,7 @@ $ git clone https://github.com/appliedmicrobiologyresearch/covgap/ /path/to/covg
 ```
 
 ## Using covgap:
-The initial reads need to be demultiplexed, paired end and tagged with `_R1.fastq.gz` and `_R2.fastq.gz`. To run the command with default options simply type:
+The initial reads need to be demultiplexed, paired end and tagged with `_R1.fastq.gz` and `_R2.fastq.gz`. Anything prior this tagging will be interpreted as the sample name. To run the command with default options simply type:
 ```
 $ snakemake -s path/to/covgap/repo/covgap.smk --use-conda --cores [number of cores reserved]
 ```
