@@ -15,7 +15,7 @@ Loci showing not enough coverage to allow a confident variant call are masked wi
 You can install snakemake by creating a conda environment, as illustrated in the [Snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) page:
 
 ### Installation:
-Portability expansion is on its way, for the moment, we reccommend to clone the repository in a directory of your choice. The procedure was tested successfully in Linux and Mac operative systems.
+Portability expansion is on its way, for the moment, we reccommend to clone the repository in a directory of your choice.
 ```
 $ git clone https://github.com/appliedmicrobiologyresearch/covgap/ /path/to/covgap
 ```
