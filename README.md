@@ -1,5 +1,5 @@
 # COVGAP
-#### COVID-19 Genome Analysis Pipeline, for whole genome sequencing and annotation of SARS-CoV-2
+#### COVID-19 Genome Analysis Pipeline, for whole genome sequencing and annotation of SARS-CoV-2 {basic version, more on the way}
 ## Introduction:
 COVGAP will process the raw demultiplexed short reads (Illumina) produced by an amplicon sequencing approach targeting SARS-CoV-2 (e.g. ARTIC)
 COVGAP will quality filter your reads and map them against the reference SARS-CoV-s genome, providing the variants in vcf format, and include them in a draft consensus genome. Only the variants showing high coverage and high alternative frequency (primary alleles variants) are included in the consensus. 
