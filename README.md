@@ -51,4 +51,19 @@ A full list of the parameters follows:
 
 | File | Description |
 | :--------------- |:---------------------------| 
-| Mapping/*sample*.alignment.removed.duplicates.mapped.reads.only.sorted.*High/Low*Cov.bam | [path] Directory containing the demultiplexed raw reads |
+| [sample]/Mapping/[sample].alignment.removed.duplicates.mapped.reads.only.sorted.[High/Low]Cov.bam | final alignment containing only reads mapping the reference |
+| [sample]/Mapping/[sample].alignment.stats.tab | stats containing the amount of mapped vs unmapped reads |
+| [sample]/Mapping/[sample].average.coverage.tab | stats containing the average coverage for the sample and its standard deviation |
+| [sample]/variantcall/[sample].final.vcf | the final vcf including all the primary alleles being found |
+| [sample]/variantcall/[sample].minority_alleles.vcf | the final vcf including all the minority alleles being found |
+| [sample]/variantcall/[sample].minority_alleles_report.tech | additional report on minority alleles, featuring the denomination, the frequency score, as well as depth |
+| [sample]/variantcall/[sample].consensus.[High/Low]Cov.fasta | the consensus genome featuring all the primary allele variants |
+| [sample]/variantcall/[sample].classification.tab | a statement file including the classification of the sample and its percentage of ambiguous basecalls |
+
+
+
+
+
+
+
+
