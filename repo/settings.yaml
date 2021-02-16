@@ -1,0 +1,26 @@
+#settings for covgp
+#initial directory containing reads
+read_dir: reads/
+##initial QC
+QC_sliding_window: 4
+QC_phred_score: 20
+QC_min_len: 125
+
+adapters: "config/dependencies/adapters.fa"
+primers: "config/dependencies/primers.fa"
+
+#alignment
+ref_genome: "config/dependencies/referenceNC.fasta"
+
+#mapping
+mapr: "config/dependencies/map_rules.json"
+unmapr: "config/dependencies/unmap_rules.json"
+uptrim_threshold: 1000
+
+#variant call
+variant_freq: 0.7
+variant_depth: 50
+
+#coverage threshold for tagging
+n_threshold: 10
+
