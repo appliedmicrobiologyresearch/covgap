@@ -23,7 +23,7 @@ $ git clone https://github.com/appliedmicrobiologyresearch/covgap/ /path/to/covg
 ## Using covgap:
 The initial reads need to be demultiplexed, paired end and tagged with `_R1.fastq.gz` and `_R2.fastq.gz`. To run the command with default options simply type:
 ```
-snakemake -s path/to/covgap/repo/covgap.smk --use-conda --cores 4
+snakemake -s path/to/covgap/repo/covgap.smk --use-conda --cores [number of cores reserved]
 ```
 Parameters are customisable by adding the flag `--config` followed by the parameter to be changed. For example, to change the directory containing reads from the default to `../my_reads/` , the command will be
 ```
@@ -50,7 +50,7 @@ A full list of the parameters follows:
 ## Output files:
 
 | File | Description |
-| :-------------------- |:---------------------------| 
+| :----------------- |:---------------------------| 
 | result/[sample]/Mapping/[sample].alignment.removed.duplicates.mapped.reads.only.sorted.[High/Low]Cov.bam | final alignment containing only reads mapping the reference |
 | result/[sample]/Mapping/[sample].alignment.stats.tab | stats containing the amount of mapped vs unmapped reads |
 | result/[sample]/Mapping/[sample].average.coverage.tab | stats containing the average coverage for the sample and its standard deviation |
