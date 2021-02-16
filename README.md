@@ -12,7 +12,7 @@ Loci showing not enough coverage to allow a confident variant call are masked wi
 - snakemake >= 5.26
 - git >=1.8.3
 
-You can install snakemake by creating a conda environment, as illustrated [here](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html):
+You can install snakemake by creating a conda environment, as illustrated in the [Snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) page:
 
 ### Installation:
 Portability expansion is on its way, for the moment, we reccommend to clone the repository in a directory of your choice. The procedure was tested successfully in Linux and Mac operative systems.
