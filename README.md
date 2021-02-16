@@ -61,6 +61,9 @@ A full list of the parameters follows:
 | result/[sample]/variantcall/[sample].classification.tab | a statement file including the classification of the sample and its percentage of ambiguous basecalls |
 
 
+## Contact:
+
+Alfredo Mari: alfredo.mari@unibas.ch
 
 
 
