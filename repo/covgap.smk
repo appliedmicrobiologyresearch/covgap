@@ -24,7 +24,7 @@ rule all:
         expand("result/{sample}/Mapping/{sample}.alignment.bam", sample=samples),
         expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.bam", sample=samples)
         expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sam", sample=samples),
-        expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.unmapped.reads.only.sam", sample=samples)
+        expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.unmapped.reads.only.sam", sample=samples),
         expand("result/{sample}/Mapping/{sample}.alignment.stats.tab", sample=samples),
         expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sorted.bam", sample=samples),
         expand("result/{sample}/Mapping/{sample}.alignment.removed.duplicates.unmapped.reads.only.sorted.bam", sample=samples),
