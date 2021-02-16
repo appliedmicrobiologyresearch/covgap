@@ -34,7 +34,7 @@ A full list of the parameters follows:
 
 | Parameter  | Description  | Default |
 | :--------------- |:---------------------------| :-------|
-| read_dir      | Directory containing the demultiplexed raw reads | reads/ |
+| read_dir      | [path] Directory containing the demultiplexed raw reads | reads/ |
 | QC_sliding_windows      | Sliding window used to scan the 5‟ end. It clips the read once the average quality within the window falls below a threshold         |   4 |
 | QC_phred_score | Minimum quality threshold per base (phred score) used to trim the read (see above sliding window) | 20 |
 | adapters | The sequence of adapters to be trimmed (fasta format) | Nextera Flex adapters |
