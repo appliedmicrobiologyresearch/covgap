@@ -15,5 +15,5 @@ mv result/"$sample_id"/Mapping/"$sample_id".alignment.removed.duplicates.mapped.
 mv result/"$sample_id"/Mapping/"$sample_id".alignment.removed.duplicates.unmapped.reads.only.sorted.bam result/"$sample_id"/Mapping/"$sample_id".alignment.removed.duplicates.unmapped.reads.only.sorted."$sampletag".bam
 mv result/"$sample_id"/Mapping/"$sample_id".alignment.removed.duplicates.mapped.1000trimmed.sorted.bam result/"$sample_id"/Mapping/"$sample_id".alignment.removed.duplicates.mapped.1000trimmed.sorted."$sampletag".bam
 sed "s/NC_045512.2/"$sample_id"_"$sampletag"/g" result/"$sample_id"/variantcall/"$sample_id".old.consensus.fasta > result/"$sample_id"/variantcall/"$sample_id".consensus."$sampletag".fasta
-rm result/"$sample_id"/variantcall/"$sample_id".old.consensus.fasta
+#rm result/"$sample_id"/variantcall/"$sample_id".old.consensus.fasta
 echo "$sample_id = $sampletag with Ns: $nperc % of the genome" > result/"$sample_id"/variantcall/"$sample_id".classification.tab
