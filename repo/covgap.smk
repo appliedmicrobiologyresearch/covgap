@@ -72,7 +72,7 @@ rule adaptor_trim:
         trimmed1_R2="result/{sample}/trimmomatic/r2.firsttrimmed.fastq.gz"
     params:
         adapters=config["adapters"]
-    threads: 1
+    threads: workflow.cores * 0.75
     output:
         adapttrim_R1="result/{sample}/trimmomatic/r1.no_adaptors.fastq.gz",
         adapttrimNP_R1="result/{sample}/trimmomatic/r1.no_adaptors.not-paired.fastq.gz",
@@ -244,13 +244,12 @@ rule coverage_stats:
     conda:
         "config/envs/Java_related.yaml"
     output:
-        temp_cov="result/{sample}/Mapping/{sample}.temp.cov",
         ave_cov="result/{sample}/Mapping/{sample}.average.coverage.tab"
     shell:
         """
-        samtools depth -a {input.mapped_S} > {output.temp_cov} 
-        awk '{{sum+=$3; sumsq+=$3*$3}} END {{ print "Average = ",sum/NR; print "Stdev = ",sqrt(sumsq/NR - (sum/NR)**2)}}' {output.temp_cov} >> {output.ave_cov}
-        rm {output.temp_cov}
+        samtools depth -a {input.mapped_S} > result/{wildcards.sample}/Mapping/{wildcards.sample}.temp.cov 
+        awk '{{sum+=$3; sumsq+=$3*$3}} END {{ print "Average = ",sum/NR; print "Stdev = ",sqrt(sumsq/NR - (sum/NR)**2)}}' result/{wildcards.sample}/Mapping/{wildcards.sample}.temp.cov >> {output.ave_cov}
+        rm result/{wildcards.sample}/Mapping/{wildcards.sample}.temp.cov
         """
 
 rule variant_call: 
