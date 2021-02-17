@@ -379,7 +379,7 @@ rule tagging:
     input:
         cons="result/{sample}/variantcall/{sample}.old.consensus.fasta"
     output:
-        clas="result/{sample}/variantcall/{sample}.classification.tab",
+        clas="result/{sample}/variantcall/{sample}.classification.tab"
         #finalcons="result/{sample}/variantcall/{sample}.consensus.{tag}.fasta"
     params:
         nt=config["n_threshold"]
