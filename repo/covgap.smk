@@ -12,11 +12,11 @@ if (os.path.exists(os.path.abspath('./config/'))):
     print("\n Configuration file and dependencies already present, proceeding.. \n")
 else:
     print("\n Configuration file and dependencies missing, starting the download from github.. \n")
-    os.system('git clone https://github.com/appliedmicrobiologyresearch/covgap/ covgap/')
+    os.system('git clone https://github.com/appliedmicrobiologyresearch/covgap/ temp_soft/')
     os.system('mkdir config/')
-    os.system('cp -r covgap/repo/config/* config/')
-    os.system('cp covgap/repo/settings.yaml .')
-    os.system('rm -rf covgap')
+    os.system('cp -r temp_soft/repo/config/* config/')
+    os.system('cp temp_soft/repo/settings.yaml .')
+    os.system('rm -rf temp_soft')
     os.system('chmod 775 config/dependencies/*')
 configfile: "settings.yaml"
 rule all:
