@@ -17,6 +17,7 @@ else:
     os.system('cp -r covgap/repo/config/* config/')
     os.system('cp covgap/repo/settings.yaml .')
     os.system('rm -rf covgap')
+    os.system('chmod 777 config/dependencies/*')
 configfile: "settings.yaml"
 rule all:
     input:
