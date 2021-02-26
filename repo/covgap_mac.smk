@@ -307,7 +307,7 @@ rule minority_variants:
     shell:
         """
         vcffilter -f "AF > 0" {input.raw_vcf} > {output.highAF}
-        ../config/dependencies/minority_revealer_1.sh {output.highAF} result/{wildcards.sample}/variantcall/{wildcards.sample}
+        config/dependencies/minority_revealer_1.sh {output.highAF} result/{wildcards.sample}/variantcall/{wildcards.sample}
         """
 
 rule annotation:
