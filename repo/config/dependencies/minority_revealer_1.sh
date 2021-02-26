@@ -34,7 +34,7 @@ T="$(cut -d ',' -f4 <<< $qpnumb)"
 echo $POS
 echo $QP
 
-declare -A QParr=( [A]=$A [C]=$C [G]=$G [T]=$T )
+declare -a QParr=( [A]=$A [C]=$C [G]=$G [T]=$T ) ##modified from A that worked in linux scicore
 
 KEYS=$(
 for KEY in ${!QParr[@]}; do
