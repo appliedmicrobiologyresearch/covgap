@@ -18,7 +18,7 @@ else:
     os.system('cp temp_soft/repo/settings.yaml .')
     os.system('rm -rf temp_soft')
     os.system('chmod 775 config/dependencies/*')
-    os.system('tar -zxvf config/envs/VariantBam.tar.gz')
+    os.system('tar -zxf config/envs/VariantBam.tar.gz config/envs/')
 configfile: "settings.yaml"
 rule all:
     input:
