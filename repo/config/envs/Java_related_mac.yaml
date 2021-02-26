@@ -1,0 +1,37 @@
+name: null
+channels:
+- bioconda
+- r
+- defaults
+- conda-forge
+dependencies:
+- bwa=0.7.17
+- libdeflate=1.0
+- pilon=1.23
+- samtools=1.9
+- trimmomatic=0.38
+- vcftools=0.1.16
+- bzip2=1.0.6
+- ca-certificates=2018.11.29
+- certifi=2018.11.29
+- curl=7.63.0
+- krb5=1.16.3
+- libcurl=7.63.0
+- libedit=3.1.20170329
+- libffi=3.2.1
+- libssh2=1.8.0
+- ncurses=6.1
+- openjdk=11.0.1
+- openssl=1.0.2p
+- perl=5.26.2
+- pip=19.0.1
+- python=2.7.15
+- readline=7.0
+- setuptools=40.7.0
+- sqlite=3.26.0
+- tk=8.6.9
+- wheel=0.32.3
+- xz=5.2.4
+- zlib=1.2.11
+prefix: /scicore/home/egliadr/GROUP/Software/conda_environments/Variant_calling
+

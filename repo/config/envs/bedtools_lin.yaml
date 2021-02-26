@@ -1,0 +1,14 @@
+name: null
+channels:
+- bioconda
+- r
+- defaults
+- conda-forge
+dependencies:
+- bedtools=2.27.1
+- _libgcc_mutex=0.1
+- libgcc-ng=9.1.0
+- libstdcxx-ng=9.1.0
+- zlib=1.2.11
+prefix: /scicore/home/egliadr/GROUP/projects/COVID-19/Illumina/Softwares/snakemake/build/envs/mock_env/bedtools2.27.1
+

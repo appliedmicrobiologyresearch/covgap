@@ -1,0 +1,27 @@
+name: null
+channels:
+- bioconda
+- r
+- defaults
+- conda-forge
+dependencies:
+- snpeff=4.5covid19
+- _libgcc_mutex=0.1
+- ca-certificates=2020.7.22
+- certifi=2019.11.28
+- libedit=3.1.20191231
+- libffi=3.3
+- libgcc-ng=9.1.0
+- libstdcxx-ng=9.1.0
+- ncurses=6.2
+- openjdk=8.0.152
+- pip=19.3.1
+- python=2.7.18
+- readline=8.0
+- setuptools=44.0.0
+- sqlite=3.33.0
+- tk=8.6.10
+- wheel=0.35.1
+- zlib=1.2.11
+prefix: /scicore/home/egliadr/GROUP/projects/COVID-19/Illumina/Softwares/Env/SnpEff4.5
+

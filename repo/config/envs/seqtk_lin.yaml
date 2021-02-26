@@ -1,0 +1,13 @@
+name: null
+channels:
+- bioconda
+- r
+- defaults
+- conda-forge
+dependencies:
+- seqtk=1.3
+- _libgcc_mutex=0.1
+- libgcc-ng=9.1.0
+- zlib=1.2.11
+prefix: /scicore/home/egliadr/GROUP/projects/COVID-19/Illumina/Softwares/snakemake/build/envs/mock_env/seqtk
+
