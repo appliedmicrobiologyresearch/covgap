@@ -20,9 +20,8 @@ Portability expansion is on its way, for the moment, we reccommend to clone the 
 $ git clone https://github.com/appliedmicrobiologyresearch/covgap/ path/to/covgap
 ```
 
-## Using covgap:
-For the moment COVGAP can run in linux or mac. Choose the appropriate version while running snakemake. 
-The initial reads need to be already demultiplexed, paired end and tagged with `_R1.fastq.gz` and `_R2.fastq.gz`. Anything prior this tagging will be interpreted as the sample name. To run the command with default options simply type:
+## Using covgap: 
+The initial reads need to be already demultiplexed, paired end and tagged with `_R1.fastq.gz` and `_R2.fastq.gz`. Anything prior this tagging will be interpreted as the sample name. For the moment COVGAP can run only in linux or macOS. Choose the appropriate version while running snakemake. To run the command with default options simply type:
 #### For linux
 ```
 $ snakemake -s path/to/covgap/repo/covgap_linux.smk --use-conda --cores [number of cores reserved]
