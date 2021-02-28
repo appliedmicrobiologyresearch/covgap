@@ -21,13 +21,19 @@ $ git clone https://github.com/appliedmicrobiologyresearch/covgap/ path/to/covga
 ```
 
 ## Using covgap:
+For the moment COVGAP can run in linux or mac. Choose the appropriate version while running snakemake. 
 The initial reads need to be already demultiplexed, paired end and tagged with `_R1.fastq.gz` and `_R2.fastq.gz`. Anything prior this tagging will be interpreted as the sample name. To run the command with default options simply type:
+#For linux
 ```
-$ snakemake -s path/to/covgap/repo/covgap.smk --use-conda --cores [number of cores reserved]
+$ snakemake -s path/to/covgap/repo/covgap_linux.smk --use-conda --cores [number of cores reserved]
+```
+#For Mac
+```
+$ snakemake -s path/to/covgap/repo/covgap_mac.smk --use-conda --cores [number of cores reserved]
 ```
 Parameters are customisable by adding the flag `--config` followed by the parameter to be changed. For example, to change the directory containing reads from the default to `../my_reads/` , the command will be:
 ```
-$ snakemake -s path/to/covgap/repo/covgap.smk --use-conda --cores 4 --config read_dir=../my_reads/
+$ snakemake -s path/to/covgap/repo/covgap_mac.smk --use-conda --cores 4 --config read_dir=../my_reads/
 ```
 
 A full list of the parameters follows:
