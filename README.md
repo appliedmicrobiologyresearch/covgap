@@ -30,7 +30,7 @@ $ snakemake -s path/to/covgap/repo/covgap_linux.smk --use-conda --cores [number 
 ```
 $ snakemake -s path/to/covgap/repo/covgap_mac.smk --use-conda --cores [number of cores reserved]
 ```
-:-----------:
+|:-----------:|
 Parameters are customisable by adding the flag `--config` followed by the parameter to be changed. For example, to change the directory containing reads from the default to `../my_reads/` , the command will be:
 ```
 $ snakemake -s path/to/covgap/repo/covgap_mac.smk --use-conda --cores 4 --config read_dir=../my_reads/
