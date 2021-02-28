@@ -8,7 +8,7 @@ Loci showing not enough coverage to allow a confident variant call are masked wi
 
 ## Installation:
 ### Requirements:
-- pyhton >= 3.7
+- python >= 3.7
 - snakemake >= 5.26
 - git >= 1.8.3
 - conda >= 4.9 (for mac only)
