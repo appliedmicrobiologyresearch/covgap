@@ -10,7 +10,8 @@ Loci showing not enough coverage to allow a confident variant call are masked wi
 ### Requirements:
 - pyhton >= 3.7
 - snakemake >= 5.26
-- git >=1.8.3
+- git >= 1.8.3
+- conda >= 4.9 (for mac only)
 
 You can install snakemake by creating a conda environment, as illustrated in the [Snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) page:
 
