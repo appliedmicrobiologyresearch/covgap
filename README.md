@@ -13,7 +13,7 @@ Loci showing not enough coverage to allow a confident variant call are masked wi
 - conda >= 4.9 (for mac only)
 - snakemake >= 5.26
 
-We recommend to install snakemake by using mamba: (unless you already have snakemake)
+In case you don't have snakemake already, we recommend to install it via mamba:
 
 ```
 $ conda install -c conda-forge mamba
@@ -27,7 +27,7 @@ more options can be found at the [Snakemake](https://snakemake.readthedocs.io/en
 Finally source the environment:
 
 ```
-conda activate snakemake
+$ conda activate snakemake
 ```
 
 ### Installation:
