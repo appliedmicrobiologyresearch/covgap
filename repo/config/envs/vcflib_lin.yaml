@@ -6,6 +6,7 @@ channels:
 - conda-forge
 dependencies:
 - vcflib=1.0.0_rc2
+- bash=5.0.018
 - _libgcc_mutex=0.1
 - bzip2=1.0.8
 - ca-certificates=2020.10.14
