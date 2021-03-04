@@ -311,6 +311,8 @@ rule minority_variants:
     shell:
         """
         vcffilter -f "AF > 0" {input.raw_vcf} > {output.highAF}
+        echo "using bash version number.."
+        bash --version
         bash config/dependencies/minority_revealer_1.sh {output.highAF} result/{wildcards.sample}/variantcall/{wildcards.sample}
         """
 
