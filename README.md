@@ -8,6 +8,7 @@ Loci showing not enough coverage to allow a confident variant call are masked wi
 
 ## Installation:
 ### Requirements:
+- bash >= 4.2
 - git >= 1.8.3
 - python >= 3.7
 - conda >= 4.9 (for mac only)
