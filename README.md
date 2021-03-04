@@ -2,17 +2,33 @@
 #### COVID-19 Genome Analysis Pipeline, for whole genome sequencing and annotation of SARS-CoV-2 {basic version, more on the way}
 ## Introduction:
 COVGAP will process the raw demultiplexed short reads (Illumina) produced by an amplicon sequencing approach targeting SARS-CoV-2 (e.g. ARTIC)
-COVGAP will quality filter your reads and map them against the reference SARS-CoV-s genome, providing the variants in vcf format, and include them in a draft consensus genome. Only the variants showing high coverage and high alternative frequency (primary alleles variants) are included in the consensus. 
+COVGAP will quality filter your reads and map them against the reference SARS-CoV-2 genome, providing the variants in vcf format, and include them in a draft consensus genome. Only the variants showing high coverage and high alternative frequency (primary alleles variants) are included in the consensus. 
 Alleles below the coverage or frequency thresholds (secondary alleles variants), and those alleles occurring as alternative to primary allele variants (alternative allele variants) are stored and annotated separately for the user consultation, but will NOT be part of the consensus.
 Loci showing not enough coverage to allow a confident variant call are masked with N, instead of calling the reference. The consensi are labelled according to a user defined threshold of ambiguous base count (N) into LowCov (Ns above threshold), HighCov (Ns below threshold).
 
 ## Installation:
 ### Requirements:
-- pyhton >= 3.7
+- git >= 1.8.3
+- python >= 3.7
+- conda >= 4.9 (for mac only)
 - snakemake >= 5.26
-- git >=1.8.3
 
-You can install snakemake by creating a conda environment, as illustrated in the [Snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) page:
+In case you don't have snakemake already, we recommend to install it via mamba:
+
+```
+$ conda install -c conda-forge mamba
+```
+then to install the full package run:
+
+```
+$ mamba create -c conda-forge -c bioconda -n snakemake snakemake
+```
+more options can be found at the [Snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) page. 
+Finally source the environment:
+
+```
+$ conda activate snakemake
+```
 
 ### Installation:
 Portability expansion is on its way, for the moment, we reccommend to clone the repository in a directory of choice:
@@ -20,14 +36,20 @@ Portability expansion is on its way, for the moment, we reccommend to clone the 
 $ git clone https://github.com/appliedmicrobiologyresearch/covgap/ path/to/covgap
 ```
 
-## Using covgap:
-The initial reads need to be already demultiplexed, paired end and tagged with `_R1.fastq.gz` and `_R2.fastq.gz`. Anything prior this tagging will be interpreted as the sample name. To run the command with default options simply type:
+## Using covgap: 
+The initial reads need to be already demultiplexed, paired end and tagged with `_R1.fastq.gz` and `_R2.fastq.gz`. Anything prior this tagging will be interpreted as the sample name. For the moment COVGAP can run only in linux or macOS. Choose the appropriate version while running snakemake. To run the command with default options simply type:
+#### For linux
 ```
-$ snakemake -s path/to/covgap/repo/covgap.smk --use-conda --cores [number of cores reserved]
+$ snakemake -s path/to/covgap/repo/covgap_linux.smk --use-conda --cores [number of cores reserved]
 ```
+#### For Mac
+```
+$ snakemake -s path/to/covgap/repo/covgap_mac.smk --use-conda --cores [number of cores reserved]
+```
+## Parametrisation and options
 Parameters are customisable by adding the flag `--config` followed by the parameter to be changed. For example, to change the directory containing reads from the default to `../my_reads/` , the command will be:
 ```
-$ snakemake -s path/to/covgap/repo/covgap.smk --use-conda --cores 4 --config read_dir=../my_reads/
+$ snakemake -s path/to/covgap/repo/covgap_mac.smk --use-conda --cores 4 --config read_dir=../my_reads/
 ```
 
 A full list of the parameters follows:
