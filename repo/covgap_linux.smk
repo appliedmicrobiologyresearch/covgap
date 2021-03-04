@@ -1,5 +1,5 @@
 
-#validate(config, "config.schema.yaml")
+
 from os import listdir
 from os.path import isfile, join
 onlyfiles = [f for f in listdir(config["read_dir"]) if isfile(join(config["read_dir"], f))]
@@ -63,7 +63,7 @@ rule length_trim_1:
         firsttrimNP_R2="result/{sample}/trimmomatic/r2.firsttrimmed.not-paired.fastq.gz",
         firsttrimLOG="result/{sample}/trimmomatic/read_trimm1_info"
     conda:
-        "config/envs/Java_related.yaml" 
+        "config/envs/Java_related_lin.yaml"
     shell:
         "trimmomatic PE -threads {threads} -phred33 {input.r1} {input.r2} {output.firsttrim_R1} {output.firsttrimNP_R1} {output.firsttrim_R2} {output.firsttrimNP_R2} SLIDINGWINDOW:{params.sw}:{params.phred} MINLEN:{params.minlen} 2> {output.firsttrimLOG}"
 
@@ -81,7 +81,7 @@ rule adaptor_trim:
         adapttrimNP_R2="result/{sample}/trimmomatic/r2.no_adaptors.not-paired.fastq.gz",
         adapttrimLOG="result/{sample}/trimmomatic/adaptor_read_trimm_info"
     conda:
-        "config/envs/Java_related.yaml"
+        "config/envs/Java_related_lin.yaml"
     shell:
         "trimmomatic PE -threads {threads} -phred33 {input.trimmed1_R1} {input.trimmed1_R2} {output.adapttrim_R1} {output.adapttrimNP_R1} {output.adapttrim_R2} {output.adapttrimNP_R2} ILLUMINACLIP:{params.adapters}:2:30:10 2> {output.adapttrimLOG}"
 
@@ -99,7 +99,7 @@ rule primer_trim:
         primer_trimmedNP_R2="result/{sample}/trimmomatic/r2.no_adaptors_no_primers.not-paired.fastq.gz",
         primer_trimmedLOG="result/{sample}/trimmomatic/primer_read_trimm_info"
     conda:
-        "config/envs/Java_related.yaml"
+        "config/envs/Java_related_lin.yaml"
     shell:
         "trimmomatic PE -threads {threads} -phred33 {input.adapter_trimmed_R1} {input.adapter_trimmed_R2} {output.primer_trimmed_R1} {output.primer_trimmedNP_R1} {output.primer_trimmed_R2} {output.primer_trimmedNP_R2} ILLUMINACLIP:{params.primers}:2:30:10 2> {output.primer_trimmedLOG}"
 
@@ -119,7 +119,7 @@ rule second_length_trim:
         end_trimmedNP_R2="result/{sample}/trimmomatic/r2.no_adaptors_no_primers_trimmed_not-paired.fastq.gz",
         end_trimmedLOG="result/{sample}/trimmomatic/no_adaptor_no_primer_quality_read_trimm_info"
     conda:
-        "config/envs/Java_related.yaml"
+        "config/envs/Java_related_lin.yaml"
     shell:
         "trimmomatic PE -threads {threads} -phred33 {input.primer_trimmed_R1} {input.primer_trimmed_R2} {output.end_trimmed_R1} {output.end_trimmedNP_R1} {output.end_trimmed_R2} {output.end_trimmedNP_R2} SLIDINGWINDOW:{params.sw}:{params.phred} MINLEN:{params.minlen} 2> {output.end_trimmedLOG}"
 
@@ -131,7 +131,7 @@ rule align:
     params:
         ref=config["ref_genome"]
     conda:
-        "config/envs/Java_related.yaml"
+        "config/envs/Java_related_lin.yaml"
     output:
         sam="result/{sample}/Mapping/{sample}.alignment.sam"
     shell:
@@ -141,8 +141,8 @@ rule sam_sort:
     input:
         sam1="result/{sample}/Mapping/{sample}.alignment.sam"
     threads: workflow.cores * 0.25
-    conda: 
-        "config/envs/Java_related.yaml"
+    conda:
+        "config/envs/Java_related_lin.yaml"
     output:
         bam="result/{sample}/Mapping/{sample}.alignment.bam",
         NDbam="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.bam"
@@ -156,12 +156,12 @@ rule sam_sort:
 rule mapping:
     input:
         Fbam="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.bam",
-    params:    
+    params:
         Rmap=config["mapr"],
         Rumap=config["unmapr"]
     threads: workflow.cores * 0.50
     conda:
-        "config/envs/variantbam.yaml"
+        "config/envs/variantbam_lin.yaml"
     output:
         map_sam="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sam",
         unmap_sam="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.unmapped.reads.only.sam"
@@ -177,7 +177,7 @@ rule map_stats:
         unmap="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.unmapped.reads.only.sam"
     threads: workflow.cores * 0.50
     conda:
-        "config/envs/Java_related.yaml"
+        "config/envs/Java_related_lin.yaml"
     output:
         map_stats="result/{sample}/Mapping/{sample}.alignment.stats.tab"
     shell:
@@ -199,7 +199,7 @@ rule sam_sort2:
         unmap="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.unmapped.reads.only.sam"
     threads: workflow.cores * 0.25
     conda:
-        "config/envs/Java_related.yaml"
+        "config/envs/Java_related_lin.yaml"
     output:
         mapped_S="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sorted.bam",
         unmapped_S="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.unmapped.reads.only.sorted.bam"
@@ -215,10 +215,10 @@ rule downtrim_DE:
     input:
         mapped_S="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sorted.bam"
     threads: workflow.cores * 0.25
-    params: 
+    params:
         up_tr=config["uptrim_threshold"]
     conda:
-        "config/envs/variantbam.yaml"
+        "config/envs/variantbam_lin.yaml"
     output:
         trimmed_1000="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.1000trimmed.sam"
     shell:
@@ -229,7 +229,7 @@ rule sam_sort_DE:
         trimmed_sam1="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.1000trimmed.sam"
     threads: workflow.cores * 0.25
     conda:
-        "config/envs/Java_related.yaml"
+        "config/envs/Java_related_lin.yaml"
     output:
         trimmed_bam="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.1000trimmed.sorted.bam"
     shell:
@@ -240,27 +240,27 @@ rule sam_sort_DE:
 
 rule coverage_stats:
     input:
-        mapped_S="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sorted.bam" 
+        mapped_S="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sorted.bam"
     threads: workflow.cores * 0.25
     conda:
-        "config/envs/Java_related.yaml"
+        "config/envs/Java_related_lin.yaml"
     output:
         ave_cov="result/{sample}/Mapping/{sample}.average.coverage.tab"
     shell:
         """
-        samtools depth -a {input.mapped_S} > result/{wildcards.sample}/Mapping/{wildcards.sample}.temp.cov 
+        samtools depth -a {input.mapped_S} > result/{wildcards.sample}/Mapping/{wildcards.sample}.temp.cov
         awk '{{sum+=$3; sumsq+=$3*$3}} END {{ print "Average = ",sum/NR; print "Stdev = ",sqrt(sumsq/NR - (sum/NR)**2)}}' result/{wildcards.sample}/Mapping/{wildcards.sample}.temp.cov >> {output.ave_cov}
         rm result/{wildcards.sample}/Mapping/{wildcards.sample}.temp.cov
         """
 
-rule variant_call: 
+rule variant_call:
     input:
         frags="result/{sample}/Mapping/{sample}.alignment.removed.duplicates.mapped.reads.only.sorted.bam"
     threads: workflow.cores * 1
     params:
         ref=config["ref_genome"]
     conda:
-        "config/envs/Java_related.yaml"
+        "config/envs/Java_related_lin.yaml"
     output:
         vcf="result/{sample}/variantcall/{sample}.vcf",
         changes="result/{sample}/variantcall/{sample}.changes"
@@ -275,7 +275,7 @@ rule variant_filter:
         af=config["variant_freq"],
         dp=config["variant_depth"]
     conda:
-        "config/envs/vcflib.yaml"
+        "config/envs/vcflib_lin.yaml"
     output:
         vcf_filt="result/{sample}/variantcall/{sample}.depth.filtered.vcf",
         final_vcf="result/{sample}/variantcall/{sample}.final.vcf"
@@ -289,7 +289,7 @@ rule variant_formats:
     input:
         final_vcf="result/{sample}/variantcall/{sample}.final.vcf"
     conda:
-        "config/envs/bcftools.yaml"
+        "config/envs/bcftools_lin.yaml"
     output:
         compressed="result/{sample}/variantcall/{sample}.consvariants.vcf.gz",
         indexed="result/{sample}/variantcall/{sample}.consvariants.vcf.gz.tbi"
@@ -303,7 +303,7 @@ rule minority_variants:
     input:
         raw_vcf="result/{sample}/variantcall/{sample}.vcf"
     conda:
-        "config/envs/vcflib.yaml"
+        "config/envs/vcflib_lin.yaml"
     output:
         highAF="result/{sample}/variantcall/{sample}.afM0.vcf",
         minority_vcf="result/{sample}/variantcall/{sample}.minority_alleles.vcf",
@@ -318,8 +318,8 @@ rule annotation:
     input:
         primary_vcf="result/{sample}/variantcall/{sample}.final.vcf",
         minority_vcf="result/{sample}/variantcall/{sample}.minority_alleles.vcf"
-    conda: 
-        "config/envs/snpeff.yaml"
+    conda:
+        "config/envs/snpeff_lin.yaml"
     output:
         annot_primary_vcf="result/{sample}/variantcall/{sample}.annotated.variants.vcf",
         annot_minority_vcf="result/{sample}/variantcall/{sample}.annotated.minorityvariants.vcf"
@@ -336,10 +336,10 @@ rule maskfinding:
     output:
         lowcovreg="result/{sample}/variantcall/{sample}.lessthan50.bed",
         mask="result/{sample}/variantcall/{sample}.finalmask.bed"
-    params: 
+    params:
         dp=config["variant_depth"]
     conda:
-        "config/envs/bedtools.yaml"
+        "config/envs/bedtools_lin.yaml"
     shell:
         """
         bedtools genomecov -bga -ibam {input.Mbam} > temp_{wildcards.sample}_out.bed
@@ -355,23 +355,23 @@ rule consensuscall:
     output:
         pre_consensus="result/{sample}/variantcall/{sample}.old.consensus.fasta"
     conda:
-        "config/envs/bcftools.yaml"
+        "config/envs/bcftools_lin.yaml"
     params:
         ref=config["ref_genome"]
     shell:
         "bcftools consensus {input.consensus_variants} -f {params.ref} -m {input.mask} -o {output.pre_consensus}"
 
 rule Nstats:
-    input: 
+    input:
         cons="result/{sample}/variantcall/{sample}.old.consensus.fasta"
     output:
         nstats="result/{sample}/variantcall/{sample}.Nstats.tab"
     conda:
-        "config/envs/seqtk.yaml"
+        "config/envs/seqtk_lin.yaml"
     shell:
         """
         echo {wildcards.sample} > {output.nstats}
-        seqtk comp {input.cons} > temp{wildcards.sample}_seqtk.temp 
+        seqtk comp {input.cons} > temp{wildcards.sample}_seqtk.temp
         awk '{{Tot+=$2; N+=$9}} END {{ print "Total length = ",Tot; print "Ns = ",N; print "Ns Perc = ", N/Tot*100,"%"}}' temp{wildcards.sample}_seqtk.temp >> {output.nstats}
         rm temp{wildcards.sample}_seqtk.temp
         """
@@ -385,7 +385,7 @@ rule tagging:
     params:
         nt=config["n_threshold"]
     conda:
-        "config/envs/seqtk.yaml"
+        "config/envs/seqtk_lin.yaml"
     shell:
         """
         config/dependencies/tagger.sh {wildcards.sample} {params.nt}
