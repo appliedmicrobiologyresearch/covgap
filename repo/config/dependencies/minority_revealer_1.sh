@@ -1,4 +1,4 @@
-#!/bin/bash
+
 ###Changes from revealer1: AF value is reported together with QP value, like this the new Rscript can classify wheather an allele is secondary or alternative based on the column, in a unique file
 file="$(tail -n +34 $1)"
 sampleid=$2
