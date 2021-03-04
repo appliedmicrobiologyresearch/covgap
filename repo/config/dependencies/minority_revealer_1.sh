@@ -1,4 +1,4 @@
-#!/bin/bash
+
 ###Changes from revealer1: AF value is reported together with QP value, like this the new Rscript can classify wheather an allele is secondary or alternative based on the column, in a unique file
 file="$(tail -n +34 $1)"
 sampleid=$2
@@ -34,7 +34,7 @@ T="$(cut -d ',' -f4 <<< $qpnumb)"
 echo $POS
 echo $QP
 
-declare -a QParr=( [A]=$A [C]=$C [G]=$G [T]=$T ) ##modified from A that worked in linux scicore
+declare -A QParr=( [A]=$A [C]=$C [G]=$G [T]=$T ) ##modified from A that worked in linux scicore
 
 KEYS=$(
 for KEY in ${!QParr[@]}; do
