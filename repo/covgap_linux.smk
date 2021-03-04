@@ -303,7 +303,7 @@ rule minority_variants:
     input:
         raw_vcf="result/{sample}/variantcall/{sample}.vcf"
     conda:
-        "config/envs/vcflib_B_lin.yaml"
+        "config/envs/vcflib_lin.yaml"
     output:
         highAF="result/{sample}/variantcall/{sample}.afM0.vcf",
         minority_vcf="result/{sample}/variantcall/{sample}.minority_alleles.vcf",
