@@ -87,6 +87,12 @@ A full list of the parameters follows:
 
 Alfredo Mari: alfredo.mari@unibas.ch
 
+## Cite COVGAP:
+
+Please refer to the following publications to properly cite COVGAP:
+
+1. Stange M, Mari A, Roloff T, Seth-Smith HM, Schweitzer M, Brunner M, et al. (2021) SARS-CoV-2 outbreak in a tri-national urban area is dominated by a B.1 lineage variant linked to a mass gathering event. PLoS Pathog 17(3): e1009374. https://doi.org/10.1371/journal.ppat.1009374
+2. Mari A, Roloff T, Stange M, Søgaard KK, Asllanaj E, Tauriello G, Alexander LT, Schweitzer M, Leuzinger K, Gensch A, Martinez AE, Bielicki J, Pargger H, Siegemund M, Nickel CH, Bingisser R, Osthoff M, Bassetti S, Sendi P, Battegay M, Marzolini C, Seth-Smith HMB, Schwede T, Hirsch HH, Egli A. Global Genomic Analysis of SARS-CoV-2 RNA Dependent RNA Polymerase Evolution and Antiviral Drug Resistance. Microorganisms. 2021; 9(5):1094. https://doi.org/10.3390/microorganisms9051094
 
 
 
